@@ -1,0 +1,1 @@
+{{ include "swapp-ads.name" . }} installed. Happy Helming.

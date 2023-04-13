@@ -1,0 +1,31 @@
+spring:
+  main:
+    allow-circular-references: true
+  data:
+    mongodb:
+      authentication-database: admin
+      username: root
+      database: demodb
+      password: example
+      port: 27017
+      host: 127.0.0.1
+  application:
+    name: apigateway
+server:
+  port: 8087
+  error:
+    include-message: always
+  shutdown: graceful
+
+zuul:
+  add-proxy-headers: true
+  routes:
+    registration:
+      path: /registration/**
+      url: http://localhost:8082/
+    annunci:
+      path: /annunci/**
+      url: http://127.0.0.1:8083/
+
+
+private.security.jwt.secret: otherpeopledontknowit

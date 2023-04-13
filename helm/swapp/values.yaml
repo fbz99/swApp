@@ -1,0 +1,36 @@
+ingress:
+  frontend:
+    enabled: true
+  backend:
+    enabled: true
+  db:
+    enabled: true
+  queue:
+    enabled: true
+
+swapp-ads:
+  replicaCount: 1
+  image:
+    tag: v6
+swapp-auth:
+  replicaCount: 1
+  image:
+    tag: v2
+swapp-db:
+  replicaCount: 1
+swapp-frontend:
+  replicaCount: 1
+  image:
+    tag: v10
+swapp-gateway:
+  replicaCount: 1
+  image:
+    tag: v6
+swapp-matcher:
+  replicaCount: 1
+  image:
+    tag: v7
+swapp-mongoexpress:
+  replicaCount: 1
+swapp-queue:
+  replicaCount: 1

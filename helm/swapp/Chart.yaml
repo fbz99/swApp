@@ -1,0 +1,43 @@
+apiVersion: v2
+name: swapp
+description: A Helm chart for Swapp
+version: 0.1.0
+appVersion: "0.1.0"
+# kubeVersion: ">= v1.16.0"
+keywords:
+  - Swapp
+type: application
+maintainers:
+  - name: "Lorenzo Camiciola"
+    email: "lorenzo.camiciola@certimetergroup.com"
+  - name: "Corrado Maschio"
+    email: "corradomaschio@yahoo.com"
+  - name: "Francesco Bozzardini"
+    email: "fbozzardini@gmail.com"
+  - name: "Fabio La Manna"
+    email: "fabiolamans98@gmail.com"
+dependencies:
+  - name: "swapp-ads"
+    version: 0.1.0
+    repository: file://../subcharts/swapp-ads
+  - name: "swapp-auth"
+    version: 0.1.0
+    repository: file://../subcharts/swapp-auth
+  - name: "swapp-db"
+    version: 0.1.0
+    repository: file://../subcharts/swapp-db
+  - name: "swapp-frontend"
+    version: 0.1.0
+    repository: file://../subcharts/swapp-frontend
+  - name: "swapp-gateway"
+    version: 0.1.0
+    repository: file://../subcharts/swapp-gateway
+  - name: "swapp-matcher"
+    version: 0.1.0
+    repository: file://../subcharts/swapp-matcher
+  - name: "swapp-queue"
+    version: 0.1.0
+    repository: file://../subcharts/swapp-queue
+  - name: "swapp-mongoexpress"
+    version: 0.1.0
+    repository: file://../subcharts/swapp-mongoexpress

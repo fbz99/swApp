@@ -1,0 +1,141 @@
+<html>
+<head>
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="css/create.css">
+    <script src="js/functions.js"></script>
+    <script src=js/sweetalert.min.js></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="home.html"><img src="logo.png" style="width: 50px;" alt="logo"></a>
+        <button
+                class="navbar-toggler"
+                type="button"
+                data-mdb-toggle="collapse"
+                data-mdb-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+        >
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-link" aria-current="page" href="home.html">Home</a>
+                <a class="nav-link active" href="create.html">Crea articolo</a>
+                <a class="nav-link" href="profile.html">Profilo</a>
+                <a class="nav-link align-right" id="logoutBtn">Logout</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+
+<section style="background-color: #eee;">
+
+    <div class="text-center container py-5">
+        <h4 class="mt-4 mb-5"><strong>Crea un nuovo annuncio</strong></h4>
+        <div id="mainbody">
+
+
+
+<div class="container mt-5 mb-5 d-flex justify-content-center text-sm-start">
+    <div class="card px-1 py-4">
+        <div class="card-body">
+            <h6 class="card-title mt-4">Inserisci le informazioni dell'annuncio</h6>
+            <div class="row">
+                <div class="col-sm-12">
+                    <span><b>Titolo</b></span>
+                    <div class="form-group">
+                        <input class="form-control" type="text" id="titolo" placeholder="Titolo"></div>
+                </div>
+            </div>
+            <div class="row">
+                <span><b>Immagine</b></span>
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <input class="form-control" type="file" accept="image/*" placeholder="Immagine" id="foto"></div>
+                </div>
+            </div>
+            <div class="row">
+                <span><b>Descrizione</b></span>
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <div class="input-group"><input type="text" id="description" placeholder="Descrizione"
+                                                        size="50"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-sm-start">
+            <span><b>Stato del prodotto</b></span>
+            <div class="form-check">
+                <input type="radio" class="form-check-input" id="nuovo" name="optradio" value="nuovo" checked>Nuovo
+                <label class="form-check-label" for="nuovo"></label>
+            </div>
+            <div class="form-check">
+                <input type="radio" class="form-check-input" id="ottimo" name="optradio" value="option2">Ottimo
+                <label class="form-check-label" for="ottimo"></label>
+            </div>
+            <div class="form-check">
+                <input type="radio" class="form-check-input" id="buono" name="optradio" value="option2">Buono
+                <label class="form-check-label" for="buono"></label>
+            </div>
+            <div class="form-check">
+                <input type="radio" class="form-check-input" id="accettabile" name="optradio" value="option2">Accettabile
+                <label class="form-check-label" for="accettabile"></label>
+            </div>
+            <span><b>Categorie</b></span>
+        <div>
+        </div>
+            <div class="form-check float-left">
+                <input type="checkbox" class="form-check-input"  name="categories" value="Informatica">
+                <label class="form-check-label">Informatica</label>
+            </div>
+            <div class="form-check float-left">
+                <input type="checkbox" class="form-check-input"  name="categories" value="Console e Videogiochi">
+                <label class="form-check-l">Console e Videogiochi</label>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" name="categories" value="Smartphone e tablet">
+                <label class="form-check-l">Smartphone e tablet</label>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" name="categories" value="Elettrodomestici">
+                <label class="form-check-label">Elettrodomestici</label>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" name="categories" value="Giardino">
+                <label class="form-check-l">Giardino</label>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" name="categories" value="Abbigliamento e Accessori">
+                <label class="form-check-l">Abbigliamento e Accessori</label>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" name="categories" value="Animali">
+                <label class="form-check-l">Animali</label>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" name="categories" value="Intrattenimento">
+                <label class="form-check-label">Intrattenimento</label>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" name="categories" value="Strumenti Musicali">
+                <label class="form-check-l">Strumenti Musicali</label>
+            </div>
+    </div>
+        <button id="confirmBtn" class="btn btn-primary btn-block confirm-button" value="Submit">Submit</button>
+    </div>
+    </div>
+</div>
+        </div>
+    </div>
+</section>
+</body>
+<script src="js/jQuery/jquery-3.6.3.min.js"></script>
+<script src="js/js.cookie.min.js"></script>
+<script src="js/bootstrap/bootstrap.min.js"></script>
+<script src="js/create.js"></script>
+</html>

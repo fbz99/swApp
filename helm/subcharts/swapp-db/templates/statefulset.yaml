@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ include "swapp-db.fullname" . }}
+  labels:
+    {{- include "swapp-db.labels" . | nindent 4 }}
+spec:
+  selector:
+    matchLabels:
+      {{- include "swapp-db.selectorLabels" . | nindent 6 }}
+  serviceName: swappdb
+  replicas: 1 # by default is 1
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "swapp-db.labels" . | nindent 8 }}
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          ports:
+            - containerPort: {{ .Values.service.port }}
+              name: http
+          volumeMounts:
+            - name: mongodata
+              mountPath: /data/db
+            - name: mongodata
+              mountPath: /data/configdb
+          env:
+            - name: MONGO_INITDB_DATABASE
+              valueFrom:
+                secretKeyRef:
+                  key: db
+                  name: {{ include "swapp-db.fullname" . }}
+            - name: MONGO_INITDB_ROOT_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  key: user
+                  name: {{ include "swapp-db.fullname" . }}
+                  optional: false
+            - name: MONGO_INITDB_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: password
+                  name: {{ include "swapp-db.fullname" . }}
+                  optional: false
+  volumeClaimTemplates:
+    - metadata:
+        name: mongodata
+      spec:
+        accessModes: [ "ReadWriteMany" ]
+        storageClassName: "cdk-cinder"
+        resources:
+          requests:
+            storage: 1Gi

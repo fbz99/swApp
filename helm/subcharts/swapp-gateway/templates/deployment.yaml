@@ -1,0 +1,83 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "swapp-gateway.fullname" . }}
+  labels:
+    {{- include "swapp-gateway.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "swapp-gateway.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "swapp-gateway.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.service.port }}
+              protocol: TCP
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          env:
+            - name: SPRING_DATA_MONGODB_HOST
+              value: swapp-swapp-db
+            - name: SPRING_DATA_MONGODB_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  key: user
+                  name: swapp-swapp-db
+                  optional: false
+            - name: SPRING_DATA_MONGODB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: password
+                  name: swapp-swapp-db
+                  optional: false
+            - name: ZUUL_ROUTES_REGISTRATION_URL
+              valueFrom:
+                configMapKeyRef:
+                  key: registrationUrl
+                  name: {{ include "swapp-gateway.fullname" . }}
+                  optional: false
+            - name: ZUUL_ROUTES_ANNUNCI_URL
+              valueFrom:
+                configMapKeyRef:
+                  key: adsUrl
+                  name: {{ include "swapp-gateway.fullname" . }}
+                  optional: false
+            - name: PRIVATE_SECURITY_JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  key: jwtSecret
+                  name: {{ include "swapp-gateway.fullname" . }}
+                  optional: false
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

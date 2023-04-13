@@ -1,0 +1,41 @@
+version: '3.1'
+
+services:
+
+  mongo:
+    image: mongo:latest
+    container_name: mongo-server
+    restart: always
+    ports:
+      - 27017:27017
+    volumes: 
+      - mongodata:/data/db
+      - mongodata:/data/configdb
+    environment:
+      MONGO_INITDB_DATABASE: demodb  
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+
+  mongo-express:
+    image: mongo-express:latest
+    restart: always
+    ports:
+      - 8081:8081
+    environment:
+      ME_CONFIG_MONGODB_SERVER: mongo-server
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: example
+      
+  rabbit-mq:
+    image: rabbitmq:latest
+    container_name: rabbit-mq
+    restart: always
+    ports: 
+      - 5672:5672
+      - 15672:15672
+    environment:
+      RABBITMQ_USER: ignazio
+      RABBITMQ_PASSWORD: larussa
+volumes:
+  mongodata:
+  

@@ -1,0 +1,18 @@
+apiVersion: v2
+name: swapp-ads
+description: A Helm chart for Swapp Advertisement service
+version: 0.1.0
+appVersion: "0.1.0"
+# kubeVersion: ">= v1.16.0"
+keywords:
+  - Swapp
+type: application
+maintainers:
+  - name: "Lorenzo Camiciola"
+    email: "lorenzo.camiciola@certimetergroup.com"
+  - name: "Corrado Maschio"
+    email: "corradomaschio@yahoo.com"
+  - name: "Francesco Bozzardini"
+    email: "fbozzardini@gmail.com"
+  - name: "Fabio La Manna"
+    email: "fabiolamans98@gmail.com"

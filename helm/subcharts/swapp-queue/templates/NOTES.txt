@@ -1,0 +1,1 @@
+{{ include "swapp-queue.name" . }} installed. Happy Helming.

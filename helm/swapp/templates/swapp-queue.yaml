@@ -1,0 +1,21 @@
+{{- if .Values.ingress.queue.enabled -}}
+{{- $fullName := include "swapp.fullname" . -}}
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ $fullName }}-queue
+  labels:
+    {{- include "swapp.labels" . | nindent 4 }}
+spec:
+  rules:
+    - host: swapp-queue.mastercc.hpc4ai.unito.it
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: swapp-swapp-queue
+                port:
+                  number: 15672
+{{- end }}

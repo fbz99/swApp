@@ -1,0 +1,1 @@
+{{ include "swapp-gateway.name" . }} installed. Happy Helming.

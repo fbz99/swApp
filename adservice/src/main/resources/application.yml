@@ -1,0 +1,27 @@
+spring:
+  data:
+    mongodb:
+      authentication-database: admin
+      username: root
+      database: demodb
+      password: example
+      port: 27017
+      host: 127.0.0.1
+  cloud:
+    stream:
+      rabbit:
+        binder:
+          admin-addresses: "localhost"
+      bindings:
+        consumer-in-0:
+          destination: "adqueue"
+          group: consumer
+          consumer:
+            max-attempts: 1
+
+server:
+  port: 8083
+  error:
+    include-message: always
+  shutdown: graceful
+

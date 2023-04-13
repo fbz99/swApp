@@ -1,0 +1,1 @@
+{{ include "swapp-frontend.name" . }} installed. Happy Helming.

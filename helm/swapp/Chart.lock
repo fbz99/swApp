@@ -1,0 +1,27 @@
+dependencies:
+- name: swapp-ads
+  repository: file://../subcharts/swapp-ads
+  version: 0.1.0
+- name: swapp-auth
+  repository: file://../subcharts/swapp-auth
+  version: 0.1.0
+- name: swapp-db
+  repository: file://../subcharts/swapp-db
+  version: 0.1.0
+- name: swapp-frontend
+  repository: file://../subcharts/swapp-frontend
+  version: 0.1.0
+- name: swapp-gateway
+  repository: file://../subcharts/swapp-gateway
+  version: 0.1.0
+- name: swapp-matcher
+  repository: file://../subcharts/swapp-matcher
+  version: 0.1.0
+- name: swapp-queue
+  repository: file://../subcharts/swapp-queue
+  version: 0.1.0
+- name: swapp-mongoexpress
+  repository: file://../subcharts/swapp-mongoexpress
+  version: 0.1.0
+digest: sha256:f12488c4c7292569e47c57cdfade6e89602285359bc72319bf06da285e18066a
+generated: "2023-02-22T16:15:40.968423546+01:00"

@@ -1,0 +1,1 @@
+{{ include "swapp.name" . }} installed. Have a good Trade!

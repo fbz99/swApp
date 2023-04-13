@@ -1,0 +1,104 @@
+# Default values for swapp-ads.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+gracePeriod: 30s
+
+image:
+  repository: mongo
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "4.0.28"
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+service:
+  type: ClusterIP
+  port: 27017
+
+startupProbe:
+  httpGet:
+    path: /actuator/health/liveness
+    port: 8080
+  # How often to perform the probe.
+  # Default: 10
+  periodSeconds: 5
+  # Consecutive failed probes to fail liveness
+  # Default: 3
+  failureThreshold: 20
+  # Minimum consecutive successes for the probe to be considered successful after having failed.
+  # Default: 1
+  successThreshold: 1
+  #Number of seconds after which the probe times out
+  timeoutSeconds: 4
+
+livenessProbe:
+  httpGet:
+    path: /actuator/health/liveness
+    port: 8080
+  # # Number of seconds after the container has started before liveness probes are initiated.
+  # initialDelaySeconds: 60
+  # How often to perform the probe.
+  # Default: 10
+  periodSeconds: 5
+  # Consecutive failed probes to fail liveness
+  # Default: 3
+  failureThreshold: 3
+  # Minimum consecutive successes for the probe to be considered successful after having failed.
+  # Default: 1
+  successThreshold: 1
+  #Number of seconds after which the probe times out
+  timeoutSeconds: 4
+
+readinessProbe:
+  httpGet:
+    path: /actuator/health/readiness
+    port: 8080
+  # # Number of seconds after the container has started before liveness probes are initiated.
+  # initialDelaySeconds: 120
+  # How often to perform the probe.
+  # Default: 10
+  periodSeconds: 6
+  # Consecutive failed probes to fail readiness
+  # Default: 3
+  failureThreshold: 3
+  # Minimum consecutive successes for the probe to be considered successful after having failed.
+  # Default: 1
+  successThreshold: 1
+  #Number of seconds after which the probe times out
+  timeoutSeconds: 4
+
+resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}

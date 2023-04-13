@@ -1,0 +1,21 @@
+{{- if .Values.ingress.db.enabled -}}
+{{- $fullName := include "swapp.fullname" . -}}
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ $fullName }}-db
+  labels:
+    {{- include "swapp.labels" . | nindent 4 }}
+spec:
+  rules:
+    - host: swapp-db.mastercc.hpc4ai.unito.it
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: swapp-swapp-mongoexpress
+                port:
+                  number: 8081
+{{- end }}

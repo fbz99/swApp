@@ -1,0 +1,44 @@
+body {
+    background-color: #FFF
+}
+
+.card {
+    width: 70%;
+    background-color: #fff;
+    border: none;
+    border-radius: 12px
+}
+
+.form-control {
+    margin-top: 10px;
+    height: 48px;
+    border: 2px solid #eee;
+    border-radius: 10px
+}
+
+#description{
+    margin-top: 10px;
+    height: 244px;
+    width: 100%;
+    border: 2px solid #eee;
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border: 2px solid #039BE5
+}
+
+.agree-text {
+    font-size: 12px
+}
+
+.terms {
+    font-size: 12px;
+    text-decoration: none;
+    color: #039BE5
+}
+
+.confirm-button {
+    height: 50px;
+    border-radius: 10px
+}

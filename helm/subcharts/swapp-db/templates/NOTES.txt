@@ -1,0 +1,1 @@
+{{ include "swapp-db.name" . }} installed. Happy Helming.

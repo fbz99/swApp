@@ -1,0 +1,110 @@
+<!Doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>SwApp index</title>
+    <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="js/functions.js"></script>
+    <script src=js/sweetalert.min.js></script>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="home.html"><img src="logo.png" style="width: 50px;" alt="logo"></a>
+        <button
+                aria-controls="navbarNavAltMarkup"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+                class="navbar-toggler"
+                data-mdb-target="#navbarNavAltMarkup"
+                data-mdb-toggle="collapse"
+                type="button"
+        >
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a aria-current="page" class="nav-link" href="home.html">Home</a>
+                <a class="nav-link " href="create.html">Crea articolo</a>
+                <a class="nav-link active" href="profile.html">Profilo</a>
+                <a class="nav-link align-right" id="logoutBtn">Logout</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="modal cd-example-modal-xl fade" id="myModal" role="dialog" tabindex="-1">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"></h5>
+                <button aria-label="Close" class="close" data-dismiss="modal" id="closeModalButton" type="button">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Product section-->
+                <section class="py-5">
+                    <div class="container px-4 px-lg-5 my-5">
+                        <div class="row gx-4 gx-lg-5 align-items-center">
+                            <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" id="image-modal" src=""/></div>
+                            <div class="col-md-6">
+                                <h1 class="display-5 fw-bolder" id="modal-title"></h1>
+                                <p class="lead" id="modal-description"></p>
+                                <p class="lead text-primary" id="modal-categories"></p>
+                                <!--<div id="heart" class="heart text-center me-3"></div>-->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- Related items section-->
+
+                <section class="py-5 bg-light" id="relatedsection">
+                    <div class="container px-4 px-lg-5 mt-5">
+                        <h2 class="fw-bolder mb-4">Prodotti correlati</h2>
+                        <div id="related">
+
+                        </div>
+                    </div>
+                    <div class="container px-4 px-lg-5 mt-5">
+                        <h2 class="fw-bolder mb-4">Articoli che hanno messo like</h2>
+                        <div id="liked">
+
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<section style="background-color: #eee;">
+
+    <div class="text-center container py-5">
+        <h4 class="mt-4 mb-5"><strong>I miei annunci</strong></h4>
+        <div id="mainbody">
+
+        </div>
+    </div>
+</section>
+
+<section style="background-color: #eee;">
+
+    <div class="text-center container py-5">
+        <h4 class="mt-4 mb-5"><strong>I miei annunci scambiati</strong></h4>
+        <div id="exchanged">
+
+        </div>
+    </div>
+</section>
+
+<script src="js/jQuery/jquery-3.6.3.min.js"></script>
+<script src="js/js.cookie.min.js"></script>
+<script src="js/bootstrap/bootstrap.min.js"></script>
+<script src="js/profile.js"></script>
+</body>
+</html>

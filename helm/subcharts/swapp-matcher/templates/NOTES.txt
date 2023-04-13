@@ -1,0 +1,1 @@
+{{ include "swapp-matcher.name" . }} installed. Happy Helming.
